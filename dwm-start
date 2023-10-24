@@ -17,11 +17,11 @@ feh --bg-fill /home/rene/Images/archlinux6.jpg &
 while true
 do
         vol=$(amixer get Master | tail -1 | sed 's/.*\[\([0-9]*%\)\].*/\1/')
-        time=$(date +"%R | %A %d/%B/%Y")
+        time=$(date +" %A %d/%B/%Y %R")
         temp="$(($(cat /sys/class/thermal/thermal_zone0/temp) / 1000))C"
         bat=$(acpi | awk '{print $4}' | tr -d ",")
 
-        xsetroot -name "🔋$bat $temp 🔉$vol $time"
+        xsetroot -name "🔋$bat $temp 🔉$vol $time"
         
         sleep 1m
 done &
