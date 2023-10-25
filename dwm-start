@@ -20,8 +20,9 @@ do
         time=$(date +" %A %d/%B/%Y %R")
         temp="$(($(cat /sys/class/thermal/thermal_zone0/temp) / 1000))C"
         bat=$(acpi | awk '{print $4}' | tr -d ",")
+	net=$(iwconfig wlp9s0 | grep ESSID | awk '{print $4}')
 
-        xsetroot -name "🔋$bat $temp 🔉$vol $time"
+        xsetroot -name "$net🔋$bat$temp🔉$vol $time"
         
         sleep 1m
 done &
