@@ -1,0 +1,43 @@
+bar:
+  height: 11
+  location: top
+  background: 00557799
+  
+  center:
+    - network:
+        name: wlp2s0
+        poll-interval: 1000
+        content:
+          map:
+            default: {string: {text: , font: "Font Awesome 6 Free:style=solid:size=10", foreground: ffffff66}}
+            conditions:
+              state == down: {string: {text: , font: "Font Awesome 6 Free:style=solid:size=10", foreground: ff0000ff}}
+              state == up:
+                map:
+                  default:
+                    - string: {text: , font: "Font Awesome 6 Free:style=solid:size=10"}
+                    - string: {text: "{ssid} {dl-speed:mb}/{ul-speed:mb} Mb/s | "}
+
+                  conditions:
+                    ipv4 == "":
+                     - string: {text: , font: , foreground: ffffff66}
+                     - string: {text: "{ssid} {dl-speed:mb}/{ul-speed:mb} Mb/s", foreground: ffffff66}
+
+    - pulse:
+         content: 
+            string: {text: " {sink_percent}% | "}
+
+    - battery:
+          name: BAT0
+          poll-interval: 60000
+          content:
+            string: {text: " {capacity}% | "}
+
+    - clock:
+         time-format: "%R"
+         date-format: "%A %d/%B/%Y"
+         content:
+           - string: {text: , font: "Font Awesome 6 Free:style=solid:size=10"}
+           - string: {text: "{date}", right-margin: 5}
+           - string: {text: , font: "Font Awesome 6 Free:style=solid:size=10"}
+           - string: {text: "{time}"}
