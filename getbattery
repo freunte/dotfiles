@@ -1,0 +1,4 @@
+#!/bin/sh
+
+bat=$(acpi | awk '{print $4 "-" $3}' | tr -d ",")
+echo $bat

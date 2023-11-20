@@ -1,9 +1,4 @@
 #!/bin/sh
 
-/usr/lib/geoclue-2.0/demos/agent &
-
-gammastep -c ~/.config/config.ini &
-
-swaybg -i ~/Immagini/archlinux3.jpg &
-
-yambar &
+dwl -s autostart_dwl > ~/.cache/dwltags
+exec <&-
