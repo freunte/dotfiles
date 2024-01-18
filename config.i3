@@ -122,8 +122,8 @@ bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym XF86AudioMute exec amixer -q set Master toggle
 
 ##Brightness Control in ALG i3
-bindsym XF86MonBrightnessUp exec sudo xbacklight -inc 10
-bindsym XF86MonBrightnessDown exec sudo xbacklight -dec 10
+bindsym XF86MonBrightnessUp exec brightnessctl set +10
+bindsym XF86MonBrightnessDown exec brightnessctl set 10-
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod

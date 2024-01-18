@@ -73,8 +73,8 @@ keys = [
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod], "d", lazy.spawn("rofi -show drun -show-icons")),
 		Key([mod, "shift"], "f", lazy.spawn("pcmanfm")),
-		Key([mod], "m", lazy.spawn("mscore")),
-		Key([mod], "p", lazy.spawn("pycharm")),
+		# Key([mod], "m", lazy.spawn("mscore")),
+		# Key([mod], "p", lazy.spawn("pycharm")),
 		Key([mod], "b", lazy.spawn("firefox")),
 
 		# Volume and brigthness
@@ -82,8 +82,8 @@ keys = [
 		Key([], "XF86AudioLowerVolume", lazy.spawn("pactl set-sink-volume @DEFAULT_SINK@ -5%")),
 		Key([], "XF86AudioMute", lazy.spawn("amixer -q set Master toggle")),
 
-		Key([], "XF86MonBrightnessUp", lazy.spawn("sudo xbacklight -inc 10")),
-		Key([], "XF86MonBrightnessDown", lazy.spawn("sudo xbacklight -dec 10")),
+		Key([], "XF86MonBrightnessUp", lazy.spawn("brigthnessctl set +10")),
+		Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl set 10-")),
 
 		# Print the screen
 		Key([], "Print", lazy.spawn("import -window root screenshot.jpg")),
