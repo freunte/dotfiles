@@ -82,7 +82,7 @@ keys = [
 		Key([], "XF86AudioLowerVolume", lazy.spawn("pactl set-sink-volume @DEFAULT_SINK@ -5%")),
 		Key([], "XF86AudioMute", lazy.spawn("amixer -q set Master toggle")),
 
-		Key([], "XF86MonBrightnessUp", lazy.spawn("brigthnessctl set +10")),
+		Key([], "XF86MonBrightnessUp", lazy.spawn("brightnessctl set +10")),
 		Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl set 10-")),
 
 		# Print the screen
@@ -92,7 +92,7 @@ keys = [
 
 ]
 
-groups = [Group(i) for i in "1234"]
+groups = [Group(i) for i in "123456789"]
 
 for i in groups:
     keys.extend(
