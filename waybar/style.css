@@ -1,5 +1,6 @@
 * {
-  /* `otf-font-awesome` is required to be installed for icons */
+  /* `otf-font-awesome ttf-arimo-nerd noto-fonts` 
+     are required to be installed for icons */
   font-family: "Noto Sans CJK KR Regular";
   font-size: 13px;
   min-height: 0;
