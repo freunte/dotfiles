@@ -1,4 +1,0 @@
-#!/bin/sh
-
-dwl -s autostart_dwl > ~/.cache/dwltags
-exec <&-
