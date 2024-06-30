@@ -219,7 +219,9 @@ myLayout = mySpacing $ tiled ||| Mirror tiled ||| Full
 -- 'className' and 'resource' are used below.
 --
 myManageHook = composeAll
-    [ isDialog  --> doFloat ]
+    [ isDialog             --> doFloat 
+    , className =? "Alert" --> doFloat
+    ]
 
 ------------------------------------------------------------------------
 -- Event handling

@@ -4,7 +4,7 @@ Config {
      font =         "xft:Bitstream Vera Sans Mono:size=10:bold:antialias=true"
    , bgColor =      "#282c34"
    , fgColor =      "white"
-   , alpha = 0
+   , alpha = 70
    -- , allDesktops =  True
    , position =     Top
    -- , border =       BottomB
