@@ -5,22 +5,11 @@
 --    , modMask     = mod4Mask
 --    , borderWidth = 1
 --    }
-
 --
--- xmonad example config file for xmonad-0.9
---
--- A template showing all available configuration hooks,
--- and how to override the defaults in your own xmonad.hs conf file.
---
--- Normally, you'd only override those defaults you care about.
---
--- NOTE: Those updating from earlier xmonad versions, who use
--- EwmhDesktops, safeSpawn, WindowGo, or the simple-status-bar
--- setup functions (dzen, xmobar) probably need to change
--- xmonad.hs, please see the notes below, or the following
--- link for more details:
---
--- http://www.haskell.org/haskellwiki/Xmonad/Notable_changes_since_0.8
+-- I took this config file from Linux Made Simple YouTube Channel,
+-- over the days I have been adding some code from DT 
+-- or websites. This file started with the lines above 
+-- that I took frome the Arch Wiki. 
 --
 
 import XMonad
