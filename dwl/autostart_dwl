@@ -2,15 +2,19 @@
 
 /usr/lib/geoclue-2.0/demos/agent &
 
-gammastep -c ~/.config/config.ini &
+# gammastep -l 19.4326:-99.1332 -t 5700:3200 &
 
-swaybg -i ~/Immagini/archlinux.jpg &
+swaybg -i ~/Images/archlinux9.png &
 
-#while true; do
-#yambar
-#done
+gammastep -c ~/.config/gammastep/config.ini &
 
 someblocks -p | dwlb -status-stdin all &
 
 dwlb &
+
+# NOTE: The file /usr/share/wayland-sessions/dwl.desktop 
+# should have this line: Exec=dwl -s autostart_dwl
+ 
+
+
  
