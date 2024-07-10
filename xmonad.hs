@@ -17,6 +17,7 @@ import Data.Monoid
 import System.Exit
 import Graphics.X11.ExtraTypes.XF86
 import XMonad.Hooks.DynamicLog
+import XMonad.Layout.NoBorders
 import XMonad.Layout.Spacing
 import XMonad.Util.Loggers
 import XMonad.Hooks.ManageHelpers
@@ -316,7 +317,7 @@ main = xmonad =<< statusBar myBar myPP toggleStrutsKey def
         keys               = myKeys,
        
       -- hooks, layouts
-        layoutHook         = myLayout,
+        layoutHook         = smartBorders $ myLayout,
         manageHook         = myManageHook,
         handleEventHook    = myEventHook,
         logHook            = myLogHook,
