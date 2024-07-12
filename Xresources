@@ -2,7 +2,7 @@
 URxvt*buffered: true
 URxvt*cursorBlink: true
 URxvt*underlineColor: white
-URxvt*font:  xft:inconsolata:size=13:antialias=true
+URxvt*font:  xft:inconsolata:size=12:antialias=true
 URxvt*depth: 32
 URxvt.geometry: 400x400
 URxvt*borderless: 1
@@ -10,10 +10,14 @@ URxvt*scrollBar: false
 URxvt*loginShell: true
 Urxvt*secondaryScroll:  true    # Enable Shift-PageUp/Down in screen
 URxvt*saveLines: 5000
+!URxvt.perl.loadResource mousewheelUp:1,scrollwheelUp:1
+!URxvt.perl.loadResource mousewheelDown:1,scrollwheelDown:1
+!*mouseWheelScroll: true
+!*mouseWheelScrollLines: 1
 URxvt*termName: rxvt-unicode
 URxvt.urlLauncher: firefox
 URxvt.matcher.button: 1
-URxvt.perl-ext-common:      default,matcher,clipboard,keyboard-select,resize-font,-confirm-paste
+URxvt.perl-ext-common:      default,matcher,clipboard,keyboard-select,resize-font,vtwheel,-confirm-paste
 URxvt.url-select.underline: true
 URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
 URxvt.keysym.Shift-Control-V: eval:paste_clipboard
