@@ -3,6 +3,7 @@ URxvt*buffered: true
 URxvt*cursorBlink: true
 URxvt*underlineColor: white
 URxvt*font:  xft:JetBrains Mono:size=13:antialias=true
+urXVT*letterSpace: -1
 URxvt*depth: 32
 URxvt.geometry: 400x400
 URxvt*borderless: 1
@@ -89,7 +90,7 @@ URxvt.keysym.Shift-Down: \033[6~
 
 ! Colors
 !*.foreground: #fbf1c7
-!*.background: [80]#000000
+!*.background: [80]#2c2200
 !*.cursorColor: #fbf1c7
 !
 !*.color0: #665c54
