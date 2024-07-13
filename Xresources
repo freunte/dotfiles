@@ -133,22 +133,59 @@ URxvt.keysym.Shift-Down: \033[6~
 !*color15: #c0caf5
 
 ! Sacred Forest
-*background: [80]#242a2d 
-*foreground: #e0d7c3
+!*background: [80]#242a2d 
+!*foreground: #e0d7c3
+!
+!*color0:  #3c4c55 
+!*color1:  #db6c6c 
+!*color2:  #8eaf6b 
+!*color3:  #ffbf00 
+!*color4:  #3ba2cc 
+!*color5:  #907eb5 
+!*color6:  #c5d4dd 
+!*color7:  #e0d7c3 
+!*color8:  #4c5866 
+!*color9:  #f88379 
+!*color10: #94b380 
+!*color11: #ddd668 
+!*color12: #7fc1ca 
+!*color13: #ae8fc1 
+!*color14: #616c72 
+!*color15: #b2a488 
 
-*color0:  #3c4c55 
-*color1:  #db6c6c 
-*color2:  #8eaf6b 
-*color3:  #ffbf00 
-*color4:  #3ba2cc 
-*color5:  #907eb5 
-*color6:  #c5d4dd 
-*color7:  #e0d7c3 
-*color8:  #4c5866 
-*color9:  #f88379 
-*color10: #94b380 
-*color11: #ddd668 
-*color12: #7fc1ca 
-*color13: #ae8fc1 
-*color14: #616c72 
-*color15: #b2a488 
+! special Kanagawa
+*.foreground:   #dcd7ba
+*.background:   [80]#1f1f28
+*.cursorColor:  #dcd7ba
+
+! black
+*.color0:       #090618
+*.color8:       #727169
+
+! red
+*.color1:       #c34043
+*.color9:       #e82424
+
+! green
+*.color2:       #76946a
+*.color10:      #98bb6c
+
+! yellow
+*.color3:       #c0a36e
+*.color11:      #e6c384
+
+! blue
+*.color4:       #7e9cd8
+*.color12:      #7fb4ca
+
+! magenta
+*.color5:       #957fb8
+*.color13:      #938aa9
+
+! cyan
+*.color6:       #6a9589
+*.color14:      #7aa89f
+
+! white
+*.color7:       #c8c093
+*.color15:      #dcd7ba
