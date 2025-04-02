@@ -24,13 +24,17 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from libqtile import bar, layout, widget
+from libqtile import bar, layout, widget, qtile
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
+from libqtile.backend.wayland import InputConfig
 import os
 
 mod = "mod4"
-terminal = "kitty"
+if qtile.core.name == "x11":
+    terminal = "st"
+elif qtile.core.name == "wayland":
+    terminal = "kitty"
 color = "#6398c2"
 
 keys = [
@@ -73,8 +77,6 @@ keys = [
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod], "d", lazy.spawn("rofi -show drun -show-icons")),
 		Key([mod, "shift"], "f", lazy.spawn("pcmanfm")),
-		# Key([mod], "m", lazy.spawn("mscore")),
-		# Key([mod], "p", lazy.spawn("pycharm")),
 		Key([mod], "b", lazy.spawn("firefox")),
 
 		# Volume and brigthness
@@ -82,8 +84,8 @@ keys = [
 		Key([], "XF86AudioLowerVolume", lazy.spawn("pactl set-sink-volume @DEFAULT_SINK@ -5%")),
 		Key([], "XF86AudioMute", lazy.spawn("amixer -q set Master toggle")),
 
-		Key([], "XF86MonBrightnessUp", lazy.spawn("brightnessctl set +10")),
-		Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl set 10-")),
+		Key([], "XF86MonBrightnessUp", lazy.spawn("btightnessctl set +5%")),
+		Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl set 5%-")),
 
 		# Print the screen
 		Key([], "Print", lazy.spawn("import -window root screenshot.jpg")),
@@ -120,14 +122,15 @@ for i in groups:
 
 layouts = [
     layout.Columns(border_focus=[color], 
-		               border_width=1, margin=3,
-									 margin_on_single=3),
+                    border_width=1, 
+                    margin=3,
+					margin_on_single=3),
     layout.Max(margin=3),
 ]
 
 widget_defaults = dict(
     font="sans",
-    fontsize=12,
+    fontsize=14,
     padding=3,
 )
 extension_defaults = widget_defaults.copy()
@@ -141,13 +144,10 @@ screens = [
                 widget.WindowName(),
                 # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
                 # widget.StatusNotifier(),
-								widget.ThermalSensor(threshold=65),
-								widget.Volume(fmt="Vol:{}"),
-                widget.Battery(format="{char} {percent:2.0%}", 
-								               low_percentage=0.25, 
-															 low_foreground="#ff0000"),
-								widget.Clock(format="%y-%m-%d %a %H:%M %p"),
-								widget.Systray(),
+				widget.ThermalSensor(threshold=65),
+				widget.Volume(fmt="Vol:{}"),
+               	widget.Clock(format="%y-%m-%d %A %H:%M %p"),
+				widget.Systray(),
                 widget.QuickExit(default_text="[schließen]"),
             ],
             24,
@@ -192,7 +192,7 @@ reconfigure_screens = True
 auto_minimize = True
 
 # When using the Wayland backend, this can be used to configure input devices.
-wl_input_rules = None
+# wl_input_rules = None
 
 # XXX: Gasp! We're lying here. In fact, nobody really uses or cares about this
 # string besides java UI toolkits; you can see several discussions on the
@@ -204,13 +204,30 @@ wl_input_rules = None
 # java that happens to be on java's whitelist.
 wmname = "LG3D"
 
-autostart = [
+autostart_X11 = [
 
     "picom -f &",
-		"/usr/lib/geoclue-2.0/demos/agent &",
-		"feh --bg-fill /home/rene/Images/archlinux9.png",
-		"nm-applet &",
+	# "/usr/lib/geoclue-2.0/demos/agent &",
+	# "redshift-gtk &",
+    "xrandr --output HDMI1 --auto --left-of LVDS1",
+	"feh --bg-fill --randomize /home/rene/Images/*",
+	"nm-applet &",
 ]
 
-for i in autostart:
-    os.system(i)
+autostart_Wayland = [
+
+    "gammastep-indicator &",
+    "swaybg -i $(find ~/Images/* -type f | shuf -n1) &",
+]
+
+if qtile.core.name == "x11":
+    for i in autostart_X11:
+        os.system(i)
+
+if qtile.core.name == "wayland":
+    wl_input_rules = {
+		"2:8:AlpsPS/2 ALPS GlidePoint": InputConfig(tap=True),
+		"type:touchpad": InputConfig(tap=True),
+	}
+    for i in autostart_Wayland:
+        os.system(i)
