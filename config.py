@@ -76,16 +76,16 @@ keys = [
     Key([mod, "shift"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod], "d", lazy.spawn("rofi -show drun -show-icons")),
-		Key([mod, "shift"], "f", lazy.spawn("pcmanfm")),
+		Key([mod, "shift"], "f", lazy.spawn("nautilus")),
 		Key([mod], "b", lazy.spawn("firefox")),
 
 		# Volume and brigthness
-		Key([], "XF86AudioRaiseVolume", lazy.spawn("pactl set-sink-volume @DEFAULT_SINK@ +5%")),
-		Key([], "XF86AudioLowerVolume", lazy.spawn("pactl set-sink-volume @DEFAULT_SINK@ -5%")),
-		Key([], "XF86AudioMute", lazy.spawn("amixer -q set Master toggle")),
+		Key([], "F10", lazy.spawn("pactl set-sink-volume @DEFAULT_SINK@ +5%")),
+		Key([], "F9", lazy.spawn("pactl set-sink-volume @DEFAULT_SINK@ -5%")),
+		Key([], "F8", lazy.spawn("amixer -q set IEC958 toggle")),
 
-		Key([], "XF86MonBrightnessUp", lazy.spawn("btightnessctl set +5%")),
-		Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl set 5%-")),
+		Key([], "F7", lazy.spawn("brightnessctl set +5%")),
+		Key([], "F6", lazy.spawn("brightnessctl set 5%-")),
 
 		# Print the screen
 		Key([], "Print", lazy.spawn("import -window root screenshot.jpg")),
@@ -144,8 +144,12 @@ screens = [
                 widget.WindowName(),
                 # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
                 # widget.StatusNotifier(),
-				widget.ThermalSensor(threshold=65),
-				widget.Volume(fmt="Vol:{}"),
+                widget.DF(visible_on_warn=False),
+                widget.Battery(format="{char} {percent:2.0%}",
+                                low_percent=0.25,
+                                low_foreground="#ff0000"),
+				widget.Volume(fmt="Vol:{}",
+                                channel="IEC958"),
                	widget.Clock(format="%y-%m-%d %A %H:%M %p"),
 				widget.Systray(),
                 widget.QuickExit(default_text="[schließen]"),
@@ -208,10 +212,10 @@ autostart_X11 = [
 
     "picom -f &",
 	# "/usr/lib/geoclue-2.0/demos/agent &",
-	# "redshift-gtk &",
-    "xrandr --output HDMI1 --auto --left-of LVDS1",
+	"redshift-gtk &",
 	"feh --bg-fill --randomize /home/rene/Images/*",
 	"nm-applet &",
+    "setxkbmap us -variant intl &",
 ]
 
 autostart_Wayland = [
