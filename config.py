@@ -82,7 +82,7 @@ keys = [
 		# Volume and brigthness
 		Key([], "F10", lazy.spawn("pactl set-sink-volume @DEFAULT_SINK@ +5%")),
 		Key([], "F9", lazy.spawn("pactl set-sink-volume @DEFAULT_SINK@ -5%")),
-		Key([], "F8", lazy.spawn("amixer -q set IEC958 toggle")),
+		Key([], "F8", lazy.spawn("pactl set-sink-mute 0 toggle")),
 
 		Key([], "F7", lazy.spawn("brightnessctl set +5%")),
 		Key([], "F6", lazy.spawn("brightnessctl set 5%-")),
