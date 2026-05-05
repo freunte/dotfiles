@@ -149,7 +149,7 @@ screens = [
                                 low_percent=0.25,
                                 low_foreground="#ff0000"),
 				widget.Volume(fmt="Vol:{}"),
-               	widget.Clock(format="%y-%m-%d %A %H:%M %p"),
+               	widget.Clock(format="%Y-%B-%d %A %H:%M %p"),
 				widget.Systray(),
                 widget.QuickExit(default_text="[schließen]"),
             ],
